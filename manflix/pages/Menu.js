@@ -6,14 +6,13 @@ import { Password } from "primereact/password";
 import { Dialog } from "primereact/dialog";
 import { Divider } from "primereact/divider";
 import background from "../public/image/img.jpg"
+import Link from "next/link";
+import Register from ".//Register";
+import UserRegister from ".//UserRegister";
+import Filmes from ".//Filmes";
 
-import Menu from "./Menu"
 
-export default function Register() {
-
-
-  
-    
+export default function Menu() {
 
     const [formData, setFormData] = useState(
         {
@@ -65,14 +64,23 @@ export default function Register() {
         <>
             <div className="html">
                 <div className="header">
+                    
                     <div className="titulo">
-                        <a href="#">MANFLIX</a>
+                        <Link href="/Menu">
+                            <a>MANFLIX</a>
+                        </Link>
                     </div>
-                    
-                    <a href="#">Novo Usuário</a>
-                    <a href="#">Novo Filme</a>
-                    <a href="#">Filmes</a>
-                    
+
+                    <Link href="/UserRegister">
+                        <a>Novo Usuário</a>
+                    </Link>
+                    <Link href="/Register">
+                        <a>Novo Filme</a>
+                    </Link>
+                    <Link href="/Filmes">
+                        <a>Filmes</a>
+                    </Link>
+
                 </div>
                 <div style={{
                     backgroundRepeat: "no-repeat",
@@ -81,39 +89,18 @@ export default function Register() {
 
 
                     <div className="body">
-
-                        <div className="form">
-                            {/* Nome do Filme */}
-                            <div className="field">
-                                <label htmlFor="name" className="lbl_NmFilme">Filme:</label>
-                                <span className="p-float-label">
-                                    <InputText id="name" name="name" autoFocus />
-                                </span>
+                        <div className="text">
+                            <div className="top_text">
+                                Filmes, séries e muito mais. 
                             </div>
 
-                            {/* Categorias */}
-                            <div className="field">
-                                <label htmlFor="categorias" className="lbl_categorias">Categoria:</label>
-                                <span className="p-float-label">
-                                    <Dropdown
-                                        id="categorias"
-                                        name="categorias"
-                                        value={selectedCategoria}
-                                        onChange={(e) => setSelectedCategoria(e.value)}
-                                        className="btn"
-                                        optionLabel="nome"
-                                        options={categorias}
-                                        placeholder="Selecione..."
-
-                                    />
-                                </span>
-
+                            <div className="mid_text">
+                                Assista onde quiser. Cancele quando quiser.
                             </div>
-                            <Button
-                                type="submit"
-                                label="Cadastrar"
-                                className="mt-2 btnSbmt"
-                            />
+
+                            <div className="floor_text">
+                                Pronto para assistir?
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -132,37 +119,38 @@ export default function Register() {
         
         }               
 
+        .text{
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            flex-direction: column;
+            
+
+        }
+        .top_text {
+            color: white;
+            font-size: 70px;
+
+        }
+
+        .mid_text {
+            color: white;
+            font-size: 35px;
+
+        }
+
+        .floor_text {
+            color: white;
+            font-size: 25px;
+
+        }
+        
         .titulo {
             color: #e50914; 
             font-size: 50px;
             letter-spacing: 9px;
         }
 
-     
-        .lbl_NmFilme{
-            font-size: 20px;
-            display:flex;
-            color: #91908c
-        }
-        
-       .lbl_categorias{
-            font-size: 20px;
-            display:flex;
-            
-            color: #91908c
-       }
-
-        .form{
-            display: flex;
-            background: white;
-            width: 400px;
-            height: 350px;
-            align-items: center;
-            justify-content: space-evenly;
-            flex-direction: column;
-            border-radius: 20px;
-
-        }
 
         .body {
             display: flex;
@@ -174,10 +162,7 @@ export default function Register() {
             backgroundRepeat: no-repeat;
         }   
 
-        .btn{
-            width:300px;
-        }
-        
+       
         
       
 

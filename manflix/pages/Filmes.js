@@ -6,54 +6,44 @@ import { Password } from "primereact/password";
 import { Dialog } from "primereact/dialog";
 import { Divider } from "primereact/divider";
 import background from "../public/image/img.jpg"
+import Register from ".//Register";
+import Menu from ".//Menu";
+import UserRegister from ".//UserRegister";
+import Link from "next/link";
 
 
-export default function Menu() {
+export default function Files() {
 
     const [formData, setFormData] = useState(
         {
             name: '',
         }
     );
-    const [categorias, setCategorias] = useState([]);
-    const [selectedCategoria, setSelectedCategoria] = useState();
-
+    
 
 
 
     useEffect(async () => {
         const response = await fetch(
-            `http://127.0.0.1:8000/categoria/`
+            `http://127.0.0.1:8000/filmes/`
         );
         const data = await response.json();
-        setCategorias(data);
+        setFilmes(data);
         console.log(data);
     }, []);
 
-    useEffect(() => {
-        // console.log(selectedRepository);
-        console.log(selectedCategoria);
-    }, [selectedCategoria]);
+    const [filmes, setFilmes] = useState([]);
+
+    
+
+
+
+    
+    
 
 
 
 
-    // const [lista,setLista] = useState([])
-    // async function getLista(){
-    //     return await fetch("http://127.0.0.1:8000/categoria/").then(response=>response.json()).then(data=>setLista(data)).catch(error=>console.log(error))
-    //  }
-
-    //  getLista()
-
-    // function handleForm(event){
-    // const {name, value} = event.target;
-    // setFormData((prevState) => 
-    //     ({
-    //     ...prevState,
-    //     [name] :value,  
-    //     })
-    // );
-    // }
 
     return (
 
@@ -61,14 +51,21 @@ export default function Menu() {
             <div className="html">
                 <div className="header">
                     <div className="titulo">
-                        <a href="#">MANFLIX</a>
+                        <Link href="/Menu">
+                            <a>MANFLIX</a>
+                        </Link>
                     </div>
 
+                    <Link href="/UserRegister">
+                        <a>Novo Usuário</a>
+                    </Link>
+                    <Link href="/Register">
+                        <a>Novo Filme</a>
+                    </Link>
+                    <Link href="/Filmes">
+                        <a>Filmes</a>
+                    </Link>
                     
-                    <a href="#">Novo Usuário</a>
-                    <a href="#">Novo Filme</a>
-                    <a href="#">Filmes</a>
-
                 </div>
                 <div style={{
                     backgroundRepeat: "no-repeat",
@@ -77,19 +74,12 @@ export default function Menu() {
 
 
                     <div className="body">
-                        <div className="text">
-                            <div className="top_text">
-                                Filmes, séries e muito mais. 
-                            </div>
-
-                            <div className="mid_text">
-                                Assista onde quiser. Cancele quando quiser.
-                            </div>
-
-                            <div className="floor_text">
-                                Pronto para assistir?
-                            </div>
+                        <div className="filme_nm">
+                            <a>Filmes Disponíveis:</a>
+                            {filmes.map(filmes => <div>{filmes.nome}</div>)}
+                            
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -107,39 +97,14 @@ export default function Menu() {
         
         }               
 
-        .text{
-            display: flex;
-            align-items: center;
-            justify-content: space-evenly;
-            flex-direction: column;
-            
-
-        }
-        .top_text {
-            color: white;
-            font-size: 70px;
-
-        }
-
-        .mid_text {
-            color: white;
-            font-size: 35px;
-
-        }
-
-        .floor_text {
-            color: white;
-            font-size: 25px;
-
-        }
-        
         .titulo {
             color: #e50914; 
             font-size: 50px;
             letter-spacing: 9px;
         }
 
-
+     
+      
         .body {
             display: flex;
             height: 899px;
@@ -150,9 +115,17 @@ export default function Menu() {
             backgroundRepeat: no-repeat;
         }   
 
+        .body a{
+            font-size: 50px;
+        }
        
         
-      
+        
+        .filme_nm{
+            color: white;
+            font-size: 25px;
+            text-align: center;
+        }
 
 
 

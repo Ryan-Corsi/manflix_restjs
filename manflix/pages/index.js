@@ -1,10 +1,10 @@
 import styles from "../styles/Home.module.css";
 import Head from "next/head";
 import Image from "next/image";
-import Register from "../components/Register";
-import Menu from "../components/Menu";
-import UserRegister from "../components/UserRegister";
-import Filmes from "../components/Filmes";
+import Register from ".//Register";
+import Menu from ".//Menu";
+import UserRegister from ".//UserRegister";
+import Filmes from ".//Filmes";
 export default function Home() {
   return (
     
@@ -41,6 +41,7 @@ export default function Home() {
       <Menu/>
       {/* <UserRegister/> */}
       {/* <Filmes/> */}
+    
     </div>
   );
 }

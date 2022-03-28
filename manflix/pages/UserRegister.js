@@ -6,8 +6,11 @@ import { Password } from "primereact/password";
 import { Dialog } from "primereact/dialog";
 import { Divider } from "primereact/divider";
 import background from "../public/image/img.jpg"
+import Register from ".//Register";
+import Menu from ".//Menu";
+import Filmes from ".//Filmes";
+import Link from "next/link";
 
-import Menu from "./Menu"
 
 export default function UserRegister() {
 
@@ -62,13 +65,20 @@ export default function UserRegister() {
             <div className="html">
                 <div className="header">
                     <div className="titulo">
-                        <a href="#">MANFLIX</a>
+                        <Link href="/Menu">
+                            <a>MANFLIX</a>
+                        </Link>
                     </div>
-                    
-                    <a href="#">Novo Usuário</a>
-                    <a href="#">Novo Filme</a>
-                    <a href="#">Filmes</a>
-                    
+
+                    <Link href="/UserRegister">
+                        <a>Novo Usuário</a>
+                    </Link>
+                    <Link href="/Register">
+                        <a>Novo Filme</a>
+                    </Link>
+                    <Link href="/Filmes">
+                        <a>Filmes</a>
+                    </Link>
                 </div>
                 <div style={{
                     backgroundRepeat: "no-repeat",
